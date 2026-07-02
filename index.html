@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generador de Contrato de Arriendo Chile Gratis - Descarga en PDF</title>
+<meta name="description" content="Genera y descarga en PDF un contrato de arriendo de predio urbano chileno, basado en la Ley 18.101, con vista previa en tiempo real. Gratis, sin registro, 100% en tu navegador.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%2314213d'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Generador de Contrato de Arriendo Chile",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" },
+  "description": "Herramienta gratuita para generar contratos de arriendo de predios urbanos en Chile conforme a la Ley 18.101, con vista previa en tiempo real y descarga en PDF."
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1>Generador de Contrato de Arriendo Chile</h1>
+    <p class="site-header__subtitle">Completa el formulario y descarga tu contrato en PDF, redactado conforme a la Ley 18.101</p>
+  </div>
+</header>
+
+<main class="app-layout">
+
+  <section class="form-panel" aria-labelledby="form-titulo">
+    <h2 id="form-titulo" class="visually-hidden">Formulario del contrato</h2>
+
+    <div id="resumen-errores" class="resumen-errores" role="alert" hidden></div>
+
+    <form id="form-contrato" novalidate>
+
+      <fieldset class="seccion">
+        <legend>Arrendador</legend>
+
+        <div class="campo">
+          <label for="arrendador-nombre">Nombre completo</label>
+          <input type="text" id="arrendador-nombre" name="arrendador-nombre" autocomplete="name" aria-describedby="err-arrendador-nombre">
+          <span class="error-mensaje" id="err-arrendador-nombre"></span>
+        </div>
+
+        <div class="campo">
+          <label for="arrendador-rut">RUT</label>
+          <input type="text" id="arrendador-rut" name="arrendador-rut" placeholder="12.345.678-9" inputmode="text" aria-describedby="err-arrendador-rut">
+          <span class="error-mensaje" id="err-arrendador-rut"></span>
+        </div>
+
+        <div class="campo">
+          <label for="arrendador-domicilio">Domicilio</label>
+          <input type="text" id="arrendador-domicilio" name="arrendador-domicilio" autocomplete="street-address" aria-describedby="err-arrendador-domicilio">
+          <span class="error-mensaje" id="err-arrendador-domicilio"></span>
+        </div>
+      </fieldset>
+
+      <fieldset class="seccion">
+        <legend>Arrendatario</legend>
+
+        <div class="campo">
+          <label for="arrendatario-nombre">Nombre completo</label>
+          <input type="text" id="arrendatario-nombre" name="arrendatario-nombre" autocomplete="name" aria-describedby="err-arrendatario-nombre">
+          <span class="error-mensaje" id="err-arrendatario-nombre"></span>
+        </div>
+
+        <div class="campo">
+          <label for="arrendatario-rut">RUT</label>
+          <input type="text" id="arrendatario-rut" name="arrendatario-rut" placeholder="12.345.678-9" inputmode="text" aria-describedby="err-arrendatario-rut">
+          <span class="error-mensaje" id="err-arrendatario-rut"></span>
+        </div>
+
+        <div class="campo">
+          <label for="arrendatario-domicilio">Domicilio</label>
+          <input type="text" id="arrendatario-domicilio" name="arrendatario-domicilio" autocomplete="street-address" aria-describedby="err-arrendatario-domicilio">
+          <span class="error-mensaje" id="err-arrendatario-domicilio"></span>
+        </div>
+      </fieldset>
+
+      <fieldset class="seccion">
+        <legend>Propiedad</legend>
+
+        <div class="campo">
+          <label for="propiedad-direccion">Dirección completa</label>
+          <input type="text" id="propiedad-direccion" name="propiedad-direccion" aria-describedby="err-propiedad-direccion">
+          <span class="error-mensaje" id="err-propiedad-direccion"></span>
+        </div>
+
+        <div class="campo">
+          <label for="propiedad-comuna">Comuna</label>
+          <input type="text" id="propiedad-comuna" name="propiedad-comuna" aria-describedby="err-propiedad-comuna">
+          <span class="error-mensaje" id="err-propiedad-comuna"></span>
+        </div>
+
+        <div class="campo">
+          <label for="propiedad-tipo">Tipo de inmueble</label>
+          <select id="propiedad-tipo" name="propiedad-tipo">
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="pieza">Pieza</option>
+            <option value="local_comercial">Local comercial</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="propiedad-rol">Rol de avalúo <span class="opcional">(opcional)</span></label>
+          <input type="text" id="propiedad-rol" name="propiedad-rol" placeholder="Ej: 1234-56">
+        </div>
+      </fieldset>
+
+      <fieldset class="seccion">
+        <legend>Condiciones</legend>
+
+        <div class="campo">
+          <label for="condiciones-renta">Renta mensual (CLP)</label>
+          <input type="number" id="condiciones-renta" name="condiciones-renta" min="0" step="1000" placeholder="Ej: 350000" aria-describedby="err-condiciones-renta">
+          <span class="error-mensaje" id="err-condiciones-renta"></span>
+        </div>
+
+        <div class="campo">
+          <label for="condiciones-dia-pago">Día de pago (del mes)</label>
+          <input type="number" id="condiciones-dia-pago" name="condiciones-dia-pago" min="1" max="31" placeholder="Ej: 5" aria-describedby="err-condiciones-dia-pago">
+          <span class="error-mensaje" id="err-condiciones-dia-pago"></span>
+        </div>
+
+        <div class="campo campo--radio-group">
+          <span class="campo__label-grupo">Duración del contrato</span>
+          <label class="radio-inline">
+            <input type="radio" name="condiciones-duracion-tipo" value="plazo" checked>
+            Plazo fijo
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="condiciones-duracion-tipo" value="indefinido">
+            Indefinido
+          </label>
+        </div>
+
+        <div class="campo campo--grupo-fechas" id="grupo-fechas">
+          <div class="campo">
+            <label for="condiciones-fecha-inicio">Fecha de inicio</label>
+            <input type="date" id="condiciones-fecha-inicio" name="condiciones-fecha-inicio" aria-describedby="err-condiciones-fecha-inicio">
+            <span class="error-mensaje" id="err-condiciones-fecha-inicio"></span>
+          </div>
+          <div class="campo">
+            <label for="condiciones-fecha-termino">Fecha de término</label>
+            <input type="date" id="condiciones-fecha-termino" name="condiciones-fecha-termino" aria-describedby="err-condiciones-fecha-termino">
+            <span class="error-mensaje" id="err-condiciones-fecha-termino"></span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="condiciones-garantia">Monto de garantía (CLP)</label>
+          <input type="number" id="condiciones-garantia" name="condiciones-garantia" min="0" step="1000" placeholder="Normalmente 1 mes de renta" aria-describedby="err-condiciones-garantia">
+          <span class="error-mensaje" id="err-condiciones-garantia"></span>
+        </div>
+
+        <div class="campo">
+          <label for="condiciones-forma-pago">Forma de pago</label>
+          <select id="condiciones-forma-pago" name="condiciones-forma-pago">
+            <option value="transferencia">Transferencia electrónica</option>
+            <option value="efectivo">Efectivo</option>
+          </select>
+        </div>
+
+        <div class="campo campo--checkbox">
+          <label>
+            <input type="checkbox" id="condiciones-reajuste-ipc" name="condiciones-reajuste-ipc">
+            Reajuste anual según variación del IPC
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="seccion">
+        <legend>Cláusulas adicionales</legend>
+
+        <div class="campo campo--checkbox">
+          <label>
+            <input type="checkbox" id="clausulas-prohibicion-subarriendo" name="clausulas-prohibicion-subarriendo">
+            Incluir prohibición absoluta de subarriendo
+          </label>
+        </div>
+
+        <div class="campo campo--radio-group">
+          <span class="campo__label-grupo">Mascotas</span>
+          <label class="radio-inline">
+            <input type="radio" name="clausulas-mascotas" value="permitidas" checked>
+            Permitidas
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="clausulas-mascotas" value="no_permitidas">
+            No permitidas
+          </label>
+        </div>
+
+        <div class="campo">
+          <label for="clausulas-extra">Cláusulas adicionales (texto libre)</label>
+          <textarea id="clausulas-extra" name="clausulas-extra" rows="4" placeholder="Ej: Se autoriza el uso de bodega N°3..."></textarea>
+        </div>
+      </fieldset>
+
+      <div class="acciones">
+        <button type="button" id="btn-descargar-pdf" class="btn btn--primario">Descargar PDF</button>
+      </div>
+
+    </form>
+  </section>
+
+  <section class="preview-panel" aria-labelledby="preview-titulo">
+    <h2 id="preview-titulo">Vista previa del contrato</h2>
+    <div id="preview" class="preview-documento" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<a href="#preview-titulo" class="btn-flotante-preview">Ver vista previa ↓</a>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <h2>¿Qué es un contrato de arriendo simple?</h2>
+    <p>Un contrato de arriendo simple es el acuerdo escrito mediante el cual el arrendador entrega el uso y goce de un inmueble urbano al arrendatario, a cambio del pago de una renta mensual. En Chile, este tipo de contratos se rige principalmente por la Ley 18.101 sobre arrendamiento de predios urbanos, que establece las reglas mínimas de protección para ambas partes, incluyendo plazos de desahucio, condiciones de término anticipado y devolución de garantías.</p>
+    <p>Para que un contrato de arriendo sea válido y proteja adecuadamente a ambas partes, debe contener al menos: la identificación completa de arrendador y arrendatario (nombre y RUT), la individualización precisa del inmueble arrendado, el monto y forma de pago de la renta, la duración del contrato y sus condiciones de renovación o término, el monto de la garantía y las condiciones para su devolución, el destino que se le dará al inmueble (habitacional o comercial), las obligaciones de mantención y reparaciones, y la firma de ambas partes con su respectivo RUT y fecha.</p>
+    <p><strong>Aviso importante:</strong> esta herramienta genera un modelo de contrato de arriendo con fines informativos y de facilitación administrativa, y no reemplaza la asesoría de un abogado. Para arriendos con condiciones complejas, propiedades de alto valor, o en caso de dudas sobre cláusulas específicas, se recomienda consultar con un profesional antes de firmar.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/rut.js"></script>
+<script src="js/formato.js"></script>
+<script src="js/contrato.js"></script>
+<script src="js/validacion.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

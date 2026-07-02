@@ -1,0 +1,359 @@
+:root {
+  --azul-oscuro: #14213d;
+  --azul-medio: #2c5282;
+  --gris-texto: #4a5568;
+  --gris-borde: #cbd5e0;
+  --gris-fondo: #f5f7fa;
+  --blanco: #ffffff;
+  --rojo-error: #c53030;
+  --rojo-fondo-error: #fff5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--gris-texto);
+  background: var(--gris-fondo);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  color: var(--azul-oscuro);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Header */
+
+.site-header {
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  padding: 2rem 1.5rem;
+}
+
+.site-header__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.site-header h1 {
+  color: var(--blanco);
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.site-header__subtitle {
+  margin: 0;
+  color: #cbd5e0;
+  font-size: 1rem;
+}
+
+/* Layout principal */
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Formulario */
+
+.form-panel {
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.resumen-errores {
+  background: var(--rojo-fondo-error);
+  border: 1px solid var(--rojo-error);
+  color: var(--rojo-error);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.resumen-errores ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.resumen-errores a {
+  color: var(--rojo-error);
+  text-decoration: underline;
+}
+
+.seccion {
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.seccion legend {
+  font-weight: 600;
+  color: var(--azul-oscuro);
+  padding: 0 0.5rem;
+}
+
+.campo {
+  margin-bottom: 1rem;
+}
+
+.campo label,
+.campo__label-grupo {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--azul-oscuro);
+}
+
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="date"],
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--gris-borde);
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--azul-oscuro);
+  background: var(--blanco);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: 2px solid var(--azul-medio);
+  outline-offset: 1px;
+}
+
+.campo input.campo-invalido,
+.campo select.campo-invalido {
+  border-color: var(--rojo-error);
+}
+
+.opcional {
+  color: #718096;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.error-mensaje {
+  display: block;
+  color: var(--rojo-error);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+  min-height: 1em;
+}
+
+.campo--checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  color: var(--gris-texto);
+}
+
+.campo--radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radio-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  color: var(--gris-texto);
+}
+
+.campo--grupo-fechas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.acciones {
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn--primario {
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  width: 100%;
+}
+
+.btn--primario:hover {
+  background: var(--azul-medio);
+}
+
+/* Vista previa */
+
+.preview-panel {
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .preview-panel {
+    position: static;
+    max-height: none;
+  }
+}
+
+.preview-panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.preview-documento {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #1a202c;
+  font-size: 0.95rem;
+  border-top: 3px solid var(--azul-oscuro);
+  padding-top: 1rem;
+}
+
+.preview-documento h3 {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.preview-documento .clausula-titulo {
+  font-weight: 700;
+  margin-top: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.preview-documento p {
+  margin: 0 0 0.75rem;
+  text-align: justify;
+}
+
+.preview-documento .placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.preview-documento .firmas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.preview-documento .firma-linea {
+  border-top: 1px solid #1a202c;
+  margin-top: 3rem;
+  padding-top: 0.4rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Botón flotante mobile */
+
+.btn-flotante-preview {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .btn-flotante-preview {
+    display: block;
+    position: sticky;
+    bottom: 1rem;
+    margin: 0 auto;
+    width: fit-content;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+  }
+}
+
+/* Footer SEO */
+
+.site-footer {
+  background: var(--blanco);
+  border-top: 1px solid var(--gris-borde);
+  margin-top: 2rem;
+}
+
+.site-footer__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.site-footer__inner p {
+  color: var(--gris-texto);
+  line-height: 1.6;
+}
+
+@media print {
+  .site-header, .form-panel, .btn-flotante-preview, .site-footer {
+    display: none;
+  }
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  .preview-panel {
+    box-shadow: none;
+    position: static;
+    max-height: none;
+  }
+}
