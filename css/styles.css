@@ -163,7 +163,7 @@ h1, h2, h3 {
 }
 
 .opcional {
-  color: #718096;
+  color: #64748b;
   font-weight: 400;
   font-size: 0.85rem;
 }
@@ -282,7 +282,7 @@ h1, h2, h3 {
 }
 
 .preview-documento .placeholder {
-  color: #a0aec0;
+  color: #64748b;
   font-style: italic;
 }
 
