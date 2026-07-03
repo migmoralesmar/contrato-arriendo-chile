@@ -7,6 +7,7 @@ window.App = window.App || {};
   const grupoFechas = document.getElementById('grupo-fechas');
   const resumenErrores = document.getElementById('resumen-errores');
   const btnDescargarPdf = document.getElementById('btn-descargar-pdf');
+  const btnDescargarWord = document.getElementById('btn-descargar-word');
 
   function leerFormulario() {
     const duracionTipo = form.querySelector('input[name="condiciones-duracion-tipo"]:checked').value;
@@ -124,6 +125,17 @@ window.App = window.App || {};
     }
     limpiarErrores();
     App.Pdf.generarPDF(datos);
+  });
+
+  btnDescargarWord.addEventListener('click', () => {
+    const datos = leerFormulario();
+    const resultado = App.Validacion.validarFormulario(datos);
+    if (!resultado.valido) {
+      mostrarErrores(resultado.errores);
+      return;
+    }
+    limpiarErrores();
+    App.Word.generarWord(datos);
   });
 
   form.addEventListener('input', actualizarVistaPrevia);

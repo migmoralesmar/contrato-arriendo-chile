@@ -101,6 +101,8 @@ window.App.Pdf = (function () {
 
     const nombreArchivo = `Contrato_Arriendo_${slug((datos.propiedad || {}).comuna)}_${fechaHoyISO()}.pdf`;
     doc.save(nombreArchivo);
+
+    if (window.va) window.va('event', { name: 'descarga_pdf' });
   }
 
   return { generarPDF };

@@ -207,6 +207,9 @@ h1, h2, h3 {
 
 .acciones {
   margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .btn {
@@ -228,6 +231,17 @@ h1, h2, h3 {
 
 .btn--primario:hover {
   background: var(--azul-medio);
+}
+
+.btn--secundario {
+  background: var(--blanco);
+  color: var(--azul-oscuro);
+  border: 1px solid var(--azul-oscuro);
+  width: 100%;
+}
+
+.btn--secundario:hover {
+  background: var(--gris-fondo);
 }
 
 /* Vista previa */
