@@ -344,6 +344,46 @@ h1, h2, h3 {
   line-height: 1.6;
 }
 
+/* Enlaces legales del footer */
+
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.site-footer__legal a {
+  color: var(--azul-medio);
+  font-size: 0.9rem;
+}
+
+/* Páginas legales (privacidad, términos) */
+
+.legal-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  background: var(--blanco);
+}
+
+.legal-page h2 {
+  margin-top: 2rem;
+}
+
+.legal-page p {
+  color: var(--gris-texto);
+  line-height: 1.6;
+}
+
+.legal-page .volver {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--azul-medio);
+}
+
 @media print {
   .site-header, .form-panel, .btn-flotante-preview, .site-footer {
     display: none;
