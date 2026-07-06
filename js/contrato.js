@@ -65,12 +65,15 @@ window.App.Contrato = (function () {
     const c = datos.condiciones || {};
     const formaPagoTexto = c.formaPago === 'efectivo' ? 'en dinero efectivo' : 'mediante transferencia electrónica a la cuenta que indique el Arrendador';
     const diaPago = c.diaPago ? `el día ${c.diaPago} de cada mes` : '[DÍA DE PAGO] de cada mes';
+    const notaUF = c.rentaMoneda === 'uf'
+      ? ' El monto en UF se pagará según el valor de dicha unidad vigente a la fecha de cada pago.'
+      : '';
     const reajuste = c.reajusteIPC
       ? ' La renta se reajustará anualmente de acuerdo con la variación del Índice de Precios al Consumidor (IPC) determinado por el Instituto Nacional de Estadísticas (INE).'
       : '';
     return {
       titulo: 'Renta de arrendamiento',
-      texto: `El Arrendatario pagará al Arrendador, por concepto de renta de arrendamiento, la suma de ${App.Formato.formatCLP(c.rentaMensual)} mensuales, pagadera ${formaPagoTexto}, ${diaPago}.${reajuste}`
+      texto: `El Arrendatario pagará al Arrendador, por concepto de renta de arrendamiento, la suma de ${App.Formato.formatMonto(c.rentaMensual, c.rentaMoneda)} mensuales, pagadera ${formaPagoTexto}, ${diaPago}.${notaUF}${reajuste}`
     };
   }
 
@@ -93,9 +96,12 @@ window.App.Contrato = (function () {
 
   function clausulaGarantia(datos) {
     const c = datos.condiciones || {};
+    const notaUF = c.garantiaMoneda === 'uf'
+      ? ' El monto en UF se calculará según el valor de dicha unidad vigente a la fecha correspondiente.'
+      : '';
     return {
       titulo: 'Garantía',
-      texto: `Para garantizar el fiel cumplimiento de las obligaciones que impone el presente contrato, el Arrendatario entrega en este acto al Arrendador la suma de ${App.Formato.formatCLP(c.garantia)} por concepto de garantía. Dicha suma será devuelta al Arrendatario dentro de los sesenta (60) días siguientes a la restitución del Inmueble, previa verificación de que este se encuentre en el mismo estado en que fue recibido, salvo el desgaste natural derivado del uso legítimo, y descontando los montos que correspondan a rentas insolutas, servicios impagos o daños no imputables al desgaste normal.`
+      texto: `Para garantizar el fiel cumplimiento de las obligaciones que impone el presente contrato, el Arrendatario entrega en este acto al Arrendador la suma de ${App.Formato.formatMonto(c.garantia, c.garantiaMoneda)} por concepto de garantía.${notaUF} Dicha suma será devuelta al Arrendatario dentro de los sesenta (60) días siguientes a la restitución del Inmueble, previa verificación de que este se encuentre en el mismo estado en que fue recibido, salvo el desgaste natural derivado del uso legítimo, y descontando los montos que correspondan a rentas insolutas, servicios impagos o daños no imputables al desgaste normal.`
     };
   }
 

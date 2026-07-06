@@ -118,8 +118,20 @@
       <fieldset class="seccion">
         <legend>Condiciones</legend>
 
+        <p class="info-uf" id="info-valor-uf" hidden>Valor UF hoy: <span id="info-valor-uf-monto"></span></p>
+
         <div class="campo">
-          <label for="condiciones-renta">Renta mensual (CLP)</label>
+          <label for="condiciones-renta">Renta mensual</label>
+          <div class="campo--radio-group campo--radio-group-moneda">
+            <label class="radio-inline">
+              <input type="radio" name="condiciones-renta-moneda" value="clp" checked>
+              CLP
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="condiciones-renta-moneda" value="uf">
+              UF
+            </label>
+          </div>
           <input type="number" id="condiciones-renta" name="condiciones-renta" min="0" step="1000" placeholder="Ej: 350000" aria-describedby="err-condiciones-renta">
           <span class="error-mensaje" id="err-condiciones-renta"></span>
         </div>
@@ -156,7 +168,17 @@
         </div>
 
         <div class="campo">
-          <label for="condiciones-garantia">Monto de garantía (CLP)</label>
+          <label for="condiciones-garantia">Monto de garantía</label>
+          <div class="campo--radio-group campo--radio-group-moneda">
+            <label class="radio-inline">
+              <input type="radio" name="condiciones-garantia-moneda" value="clp" checked>
+              CLP
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="condiciones-garantia-moneda" value="uf">
+              UF
+            </label>
+          </div>
           <input type="number" id="condiciones-garantia" name="condiciones-garantia" min="0" step="1000" placeholder="Normalmente 1 mes de renta" aria-describedby="err-condiciones-garantia">
           <span class="error-mensaje" id="err-condiciones-garantia"></span>
         </div>
@@ -174,6 +196,7 @@
             <input type="checkbox" id="condiciones-reajuste-ipc" name="condiciones-reajuste-ipc">
             Reajuste anual según variación del IPC
           </label>
+          <p class="aviso-advertencia" id="aviso-ipc-uf" hidden>La renta ya está en UF, que se ajusta automáticamente a la inflación. Marcar además el reajuste por IPC puede producir un doble reajuste — revise si esto es intencional.</p>
         </div>
       </fieldset>
 
@@ -244,6 +267,7 @@
 <script src="js/validacion.js"></script>
 <script src="js/pdf.js"></script>
 <script src="js/word.js"></script>
+<script src="js/uf.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

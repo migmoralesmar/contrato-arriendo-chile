@@ -9,6 +9,12 @@ window.App = window.App || {};
   const btnDescargarPdf = document.getElementById('btn-descargar-pdf');
   const btnDescargarWord = document.getElementById('btn-descargar-word');
 
+  function leerMontoSegunMoneda(inputId, radioName) {
+    const input = document.getElementById(inputId);
+    const moneda = form.querySelector(`input[name="${radioName}"]:checked`).value;
+    return moneda === 'uf' ? input.value : (Number(input.value) || 0);
+  }
+
   function leerFormulario() {
     const duracionTipo = form.querySelector('input[name="condiciones-duracion-tipo"]:checked').value;
     const mascotas = form.querySelector('input[name="clausulas-mascotas"]:checked').value;
@@ -31,14 +37,16 @@ window.App = window.App || {};
         rol: document.getElementById('propiedad-rol').value
       },
       condiciones: {
-        rentaMensual: Number(document.getElementById('condiciones-renta').value) || 0,
+        rentaMensual: leerMontoSegunMoneda('condiciones-renta', 'condiciones-renta-moneda'),
+        rentaMoneda: form.querySelector('input[name="condiciones-renta-moneda"]:checked').value,
         diaPago: Number(document.getElementById('condiciones-dia-pago').value) || 0,
         duracion: {
           tipo: duracionTipo,
           fechaInicio: document.getElementById('condiciones-fecha-inicio').value,
           fechaTermino: document.getElementById('condiciones-fecha-termino').value
         },
-        garantia: Number(document.getElementById('condiciones-garantia').value) || 0,
+        garantia: leerMontoSegunMoneda('condiciones-garantia', 'condiciones-garantia-moneda'),
+        garantiaMoneda: form.querySelector('input[name="condiciones-garantia-moneda"]:checked').value,
         formaPago: document.getElementById('condiciones-forma-pago').value,
         reajusteIPC: document.getElementById('condiciones-reajuste-ipc').checked
       },
@@ -59,6 +67,29 @@ window.App = window.App || {};
   function actualizarVisibilidadFechas() {
     const tipo = form.querySelector('input[name="condiciones-duracion-tipo"]:checked').value;
     grupoFechas.style.display = tipo === 'indefinido' ? 'none' : '';
+  }
+
+  function actualizarInputSegunMoneda(inputId, radioName, placeholderClp) {
+    const input = document.getElementById(inputId);
+    const moneda = form.querySelector(`input[name="${radioName}"]:checked`).value;
+    if (moneda === 'uf') {
+      input.step = '0.01';
+      input.placeholder = 'Ej: 15.5';
+    } else {
+      input.step = '1000';
+      input.placeholder = placeholderClp;
+    }
+  }
+
+  function actualizarInputsMoneda() {
+    actualizarInputSegunMoneda('condiciones-renta', 'condiciones-renta-moneda', 'Ej: 350000');
+    actualizarInputSegunMoneda('condiciones-garantia', 'condiciones-garantia-moneda', 'Normalmente 1 mes de renta');
+  }
+
+  function actualizarAdvertenciaIpcUf() {
+    const rentaMoneda = form.querySelector('input[name="condiciones-renta-moneda"]:checked').value;
+    const ipcMarcado = document.getElementById('condiciones-reajuste-ipc').checked;
+    document.getElementById('aviso-ipc-uf').hidden = !(rentaMoneda === 'uf' && ipcMarcado);
   }
 
   function formatearYValidarRutCampo(input) {
@@ -141,6 +172,8 @@ window.App = window.App || {};
   form.addEventListener('input', actualizarVistaPrevia);
   form.addEventListener('change', () => {
     actualizarVisibilidadFechas();
+    actualizarInputsMoneda();
+    actualizarAdvertenciaIpcUf();
     actualizarVistaPrevia();
   });
 
@@ -154,7 +187,21 @@ window.App = window.App || {};
   });
 
   actualizarVisibilidadFechas();
+  actualizarInputsMoneda();
+  actualizarAdvertenciaIpcUf();
   actualizarVistaPrevia();
+
+  (async function inicializarValorUF() {
+    const contenedor = document.getElementById('info-valor-uf');
+    const spanMonto = document.getElementById('info-valor-uf-monto');
+    const valor = await App.Uf.obtenerValorUF();
+    if (valor === null) {
+      contenedor.hidden = true;
+      return;
+    }
+    spanMonto.textContent = App.Formato.formatCLP(valor);
+    contenedor.hidden = false;
+  })();
 
   window.App.leerFormulario = leerFormulario;
 })();
